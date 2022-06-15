@@ -1,0 +1,5 @@
+.frm-search input[type=search]:hover, .frm-search input[type=search]:focus {
+  border-color: #6b7280;
+  outline: none;
+  box-shadow: none;
+}

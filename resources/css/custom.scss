@@ -1,0 +1,10 @@
+.frm-search {
+    input[type="search"] {
+        &:hover,
+        &:focus {
+            border-color: #6b7280;
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}
