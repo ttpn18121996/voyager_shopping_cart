@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Inertia\Inertia;
 
 class ShopController extends Controller
@@ -25,9 +26,22 @@ class ShopController extends Controller
      */
     public function attachCategories(Request $request, Shop $shop)
     {
-        dd($request->all());
         $shop->categories()->sync($request->input('categories', []));
 
-        return redirect()->route('categories.index');
+        return response()->noContent();
+    }
+
+    /**
+     * Remove a category from shop.
+     *
+     * @param  \App\Models\Shop  $shop
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function removeCategory(Shop $shop, Category $category)
+    {
+        $shop->categories()->detach($category);
+        
+        return response()->noContent();
     }
 }

@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Http\Requests\Auth\RegisterShopRequest;
+use App\Models\Shop;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 
-class RegisteredUserController extends Controller
+class RegisteredShopController extends Controller
 {
     /**
      * Display the registration view.
@@ -27,28 +26,25 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Auth\RegisterShopRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(RegisterShopRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
-        $user = User::create([
+        $shop = Shop::create([
             'name' => $request->name,
+            'phone' => str($request->phone)->substr(1)->prepend('+84')->toString(),
+            'address' => $request->address,
+            'tax_code' => $request->tax_code,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        event(new Registered($shop));
 
-        Auth::login($user);
+        Auth::guard('shop')->login($shop);
 
         return redirect(RouteServiceProvider::HOME);
     }

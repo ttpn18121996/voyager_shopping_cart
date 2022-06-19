@@ -18,3 +18,5 @@ Route::controller(CategoryController::class)->group(function () {
 
 Route::post('/api/shop/{shop}/attach-categories', [ShopController::class, 'attachCategories'])
     ->name('api.shop.attach-categories');
+Route::delete('/api/shop/{shop}/category/{category}', [ShopController::class, 'removeCategory'])
+    ->name('api.shop.remove-category');

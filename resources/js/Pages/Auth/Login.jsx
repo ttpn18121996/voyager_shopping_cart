@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Button from "@/Components/Button";
-import Checkbox from "@/Components/Checkbox";
 import Input from "@/Components/Input";
 import Label from "@/Components/Label";
 import ValidationErrors from "@/Components/ValidationErrors";
@@ -81,15 +80,12 @@ export default function Login({ status, canResetPassword }) {
 
                     <div className="block mt-4">
                         <label className="flex items-center">
-                            <Checkbox
-                                name="remember"
-                                value={data.remember}
-                                handleChange={onHandleChange}
-                            />
-
-                            <span className="ml-2 text-sm text-gray-600">
-                                Remember me
-                            </span>
+                            <Link
+                                href={route("register")}
+                                className="ml-2 underline text-sm text-gray-600 hover:text-gray-900"
+                            >
+                                Register a shop
+                            </Link>
                         </label>
                     </div>
 

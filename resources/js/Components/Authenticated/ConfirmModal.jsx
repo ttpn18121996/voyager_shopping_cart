@@ -26,6 +26,7 @@ export default function ConfirmModal() {
                         <button
                             type="button"
                             className="bg-blue-400 text-white mr-2 px-4 py-2 rounded"
+                            key="btnConfirmRemove"
                             onClick={handleConfirm}
                         >
                             Confirm

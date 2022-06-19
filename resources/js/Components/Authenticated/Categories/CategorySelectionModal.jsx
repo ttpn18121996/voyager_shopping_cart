@@ -4,9 +4,8 @@ import {
     categoryFetchCategoriesAction,
     categorySetSelectedCategoriesAction,
 } from "@/redux/actions/categoryActions";
-import { useForm } from "@inertiajs/inertia-react";
 import axios from "axios";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -31,7 +30,6 @@ const _columns = [
 ];
 
 export default function CategoySelectionModal(props) {
-    const { setData, post } = useForm();
     const open = useSelector(
         (state) => state.categoryReducers.categorySelectionModal.open
     );
@@ -80,23 +78,24 @@ export default function CategoySelectionModal(props) {
     };
 
     const handleSave = () => {
-        setData({
-            categories: selectedCategories.map((item) => item.id),
-        });
-        post(`/dashboard/api/shop/${props.auth.user.id}/attach-categories`);
-        // axios
-        //     .post(
-        //         `/dashboard/api/shop/${props.auth.user.id}/attach-categories`,
-        //         {
-        //             categories: selectedCategories.map((item) => item.id),
-        //         }
-        //     )
-        //     .then(
-        //         (res) => {
-        //             closeModal();
-        //         },
-        //         (error) => console.error(error.message)
-        //     );
+        axios
+            .post(
+                route("dashboard.api.shop.attach-categories", {
+                    shop: props.auth.user.id,
+                }),
+                {
+                    categories: selectedCategories.map((item) => item.id),
+                }
+            )
+            .then(
+                () => {
+                    window.location.reload();
+                },
+                (error) => {
+                    console.error(error.message);
+                    closeModal();
+                }
+            );
     };
 
     return (

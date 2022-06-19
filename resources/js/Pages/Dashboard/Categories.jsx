@@ -7,6 +7,7 @@ import {
 import { categoryToggleCategorySelectionModalAction } from "@/redux/actions/categoryActions";
 import { XIcon } from "@heroicons/react/solid";
 import { Head } from "@inertiajs/inertia-react";
+import axios from "axios";
 import DataTable from "react-data-table-component";
 import { useDispatch } from "react-redux";
 
@@ -48,10 +49,7 @@ export default function Categories(props) {
                                 message: "Do you want to remove this?",
                                 title: "Confirm remove",
                                 confirm: () => {
-                                    console.log(row.id);
-                                    dispatch(
-                                        authenticatedCloseConfirmModalAction()
-                                    );
+                                    handleRemoveCategoryFromShop(row.id);
                                 },
                             })
                         )
@@ -61,6 +59,25 @@ export default function Categories(props) {
                 </button>
             );
         },
+    };
+
+    const handleRemoveCategoryFromShop = (categoryId) => {
+        axios
+            .delete(
+                route("dashboard.api.shop.remove-category", {
+                    shop: props.auth.user.id,
+                    category: categoryId,
+                })
+            )
+            .then(
+                (res) => {
+                    window.location.reload();
+                },
+                (error) => {
+                    console.error(error.message);
+                    dispatch(authenticatedCloseConfirmModalAction());
+                }
+            );
     };
 
     return (

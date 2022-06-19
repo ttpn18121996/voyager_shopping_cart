@@ -23,7 +23,7 @@ class ShopFactory extends Factory
             'phone' => $this->faker->e164PhoneNumber(),
             'address' => $this->faker->address(),
             'description' => $this->faker->text(),
-            'tax_code' => $this->faker->creditCardNumber(),
+            'tax_code' => str($this->faker->e164PhoneNumber())->substr(1, 10)->toString(),
             'created_at' => now(),
             'updated_at' => now(),
         ];
