@@ -6,6 +6,21 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/inertia-react";
 import ConfirmModal from "@/Components/Authenticated/ConfirmModal";
 
+const MENU = [
+    {
+        routeName: "dashboard",
+        title: "Dashboard",
+    },
+    {
+        routeName: "dashboard.categories.index",
+        title: "Categories",
+    },
+    {
+        routeName: "dashboard.products.index",
+        title: "Products",
+    },
+];
+
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
@@ -23,22 +38,15 @@ export default function Authenticated({ auth, header, children }) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink
-                                    href={route("dashboard.dashboard")}
-                                    active={route().current(
-                                        "dashboard.dashboard"
-                                    )}
-                                >
-                                    Dashboard
-                                </NavLink>
-                                <NavLink
-                                    href={route("dashboard.categories.index")}
-                                    active={route().current(
-                                        "dashboard.categories.index"
-                                    )}
-                                >
-                                    Categories
-                                </NavLink>
+                                {MENU.map((item, key) => (
+                                    <NavLink
+                                        key={key}
+                                        href={route(item.routeName)}
+                                        active={route().current(item.routeName)}
+                                    >
+                                        {item.title}
+                                    </NavLink>
+                                ))}
                             </div>
                         </div>
 
@@ -70,6 +78,16 @@ export default function Authenticated({ auth, header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
+                                        <Dropdown.Link
+                                            href={route(
+                                                "dashboard.shop.edit-info"
+                                            )}
+                                            method="get"
+                                            as="button"
+                                        >
+                                            {auth.user.email}
+                                        </Dropdown.Link>
+
                                         <Dropdown.Link
                                             href={route("logout")}
                                             method="post"
@@ -132,20 +150,15 @@ export default function Authenticated({ auth, header, children }) {
                     }
                 >
                     <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink
-                            href={route("dashboard.dashboard")}
-                            active={route().current("dashboard.dashboard")}
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route("dashboard.categories.index")}
-                            active={route().current(
-                                "dashboard.categories.index"
-                            )}
-                        >
-                            Categories
-                        </ResponsiveNavLink>
+                        {MENU.map((item, key) => (
+                            <ResponsiveNavLink
+                                key={key}
+                                href={route(item.routeName)}
+                                active={route().current(item.routeName)}
+                            >
+                                {item.title}
+                            </ResponsiveNavLink>
+                        ))}
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">

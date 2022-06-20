@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateShopInfoRequest;
 use App\Models\Category;
 use Inertia\Inertia;
 
@@ -15,6 +16,29 @@ class ShopController extends Controller
     public function __construct(Shop $shop)
     {
         $this->shop = $shop;
+    }
+
+    /**
+     * Display the information of current shop.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editInfo()
+    {
+        return Inertia::render('Dashboard/ShopInfo');
+    }
+
+    /**
+     * @param  \App\Http\Requests\UpdateShopInfoRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateInfo(UpdateShopInfoRequest $request)
+    {
+        $user = $request->user();
+        $user->fill($request->validated());
+        $user->update();
+
+        return Inertia::render('Dashboard/ShopInfo');
     }
 
     /**
@@ -41,7 +65,7 @@ class ShopController extends Controller
     public function removeCategory(Shop $shop, Category $category)
     {
         $shop->categories()->detach($category);
-        
+
         return response()->noContent();
     }
 }

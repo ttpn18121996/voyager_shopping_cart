@@ -8,3 +8,14 @@
         }
     }
 }
+.select2 {
+    height: 42px;
+    div {
+        cursor: text;
+    }
+    input[type="text"] {
+        outline: none !important;
+        border: none;
+        box-shadow: none;
+    }
+}

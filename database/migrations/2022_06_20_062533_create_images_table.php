@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shops', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone');
-            $table->string('address');
-            $table->text('description')->nullable();
-            $table->string('tax_code');
+            $table->string('imageable_type');
+            $table->unsignedBigInteger('imageable_id');
+            $table->tinyInteger('type')->default(0)->comment('0: thumbnail, 1: avatar, 2: attachment');
+            $table->string('image_url');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('images');
     }
 };

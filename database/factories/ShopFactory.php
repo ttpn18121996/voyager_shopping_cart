@@ -20,7 +20,7 @@ class ShopFactory extends Factory
             'name' => $this->faker->company(),
             'email' => $this->faker->safeEmail(),
             'password' => bcrypt('password'),
-            'phone' => $this->faker->e164PhoneNumber(),
+            'phone' => str($this->faker->e164PhoneNumber())->substr(1, 10)->toString(),
             'address' => $this->faker->address(),
             'description' => $this->faker->text(),
             'tax_code' => str($this->faker->e164PhoneNumber())->substr(1, 10)->toString(),

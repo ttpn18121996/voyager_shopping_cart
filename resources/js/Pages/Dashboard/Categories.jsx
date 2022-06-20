@@ -5,7 +5,7 @@ import {
     authenticatedToggleConfirmModalAction,
 } from "@/redux/actions/authenticatedActions";
 import { categoryToggleCategorySelectionModalAction } from "@/redux/actions/categoryActions";
-import { XIcon } from "@heroicons/react/solid";
+import { PlusIcon, XIcon } from "@heroicons/react/solid";
 import { Head } from "@inertiajs/inertia-react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
@@ -15,6 +15,7 @@ const _columns = [
     {
         id: "id",
         name: "ID",
+        width: "100px",
         selector: (row) => row.id,
     },
     {
@@ -87,11 +88,11 @@ export default function Categories(props) {
                 errors={props.errors}
                 header={
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Category
+                        Categories
                     </h2>
                 }
             >
-                <Head title="Category" />
+                <Head title="Categories" />
 
                 <div className="py-12">
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -99,7 +100,7 @@ export default function Categories(props) {
                             <div className="text-right p-4">
                                 <button
                                     type="button"
-                                    className="py-2 px-4 border border-blue-400 text-center bg-blue-400 text-white rounded"
+                                    className="py-2 px-4 border border-blue-500 text-center bg-blue-500 text-white rounded"
                                     onClick={() =>
                                         dispatch(
                                             categoryToggleCategorySelectionModalAction(
@@ -110,6 +111,7 @@ export default function Categories(props) {
                                         )
                                     }
                                 >
+                                    <PlusIcon className="text-white w-4 h-4 inline-block mr-2" />
                                     Add Category
                                 </button>
                             </div>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rule;
 
-class RegisterShopRequest extends FormRequest
+class UpdateShopInfoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,11 @@ class RegisterShopRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255', 'unique:shops'],
-            'email' => ['required', 'string', 'max:255', 'email', 'unique:shops'],
-            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
+            'name' => ['required', 'string', 'max:255', Rule::unique('shops', 'name')->ignore(auth('shop')->id())],
             'phone' => ['required', 'regex:/^[\d]{10}$/i'],
             'address' => ['required'],
             'tax_code' => ['required', 'regex:/^[\d]{10}(\-[\d]{3})*$/i'],
+            'description' => ['nullable'],
         ];
     }
 }

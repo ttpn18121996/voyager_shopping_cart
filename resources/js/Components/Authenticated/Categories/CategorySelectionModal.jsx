@@ -13,6 +13,7 @@ const _columns = [
     {
         id: "id",
         name: "ID",
+        width: "100px",
         selector: (row) => row.id,
     },
     {

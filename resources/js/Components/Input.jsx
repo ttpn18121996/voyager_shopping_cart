@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 export default function Input({
-    type = 'text',
+    type = "text",
     name,
     value,
     className,
@@ -9,6 +9,7 @@ export default function Input({
     required,
     isFocused,
     handleChange,
+    prepend,
 }) {
     const input = useRef();
 
@@ -19,7 +20,12 @@ export default function Input({
     }, []);
 
     return (
-        <div className="flex flex-col items-start">
+        <div
+            className={
+                "flex items-start " + (prepend ? "flex-row gap-2" : "flex-col")
+            }
+        >
+            {prepend}
             <input
                 type={type}
                 name={name}

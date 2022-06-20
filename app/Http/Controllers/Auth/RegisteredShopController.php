@@ -35,7 +35,7 @@ class RegisteredShopController extends Controller
     {
         $shop = Shop::create([
             'name' => $request->name,
-            'phone' => str($request->phone)->substr(1)->prepend('+84')->toString(),
+            'phone' => $request->phone,
             'address' => $request->address,
             'tax_code' => $request->tax_code,
             'email' => $request->email,
