@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\ShopManagement;
 
 use Inertia\Inertia;
 use App\Models\Category;
@@ -30,7 +30,7 @@ class CategoryController extends Controller
     {
         $categories = $request->user('shop')->categories;
 
-        return Inertia::render('Dashboard/Categories', compact('categories'));
+        return Inertia::render('ShopManagement/Categories', compact('categories'));
     }
 
     /**

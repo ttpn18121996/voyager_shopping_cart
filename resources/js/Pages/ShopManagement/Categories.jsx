@@ -65,7 +65,7 @@ export default function Categories(props) {
     const handleRemoveCategoryFromShop = (categoryId) => {
         axios
             .delete(
-                route("dashboard.api.shop.remove-category", {
+                route("shop-management.api.shop.remove-category", {
                     shop: props.auth.user.id,
                     category: categoryId,
                 })

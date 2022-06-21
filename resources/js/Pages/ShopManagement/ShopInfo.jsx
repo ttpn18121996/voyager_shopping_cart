@@ -33,7 +33,7 @@ export default function ShopInfo(props) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("dashboard.shop.update-info"));
+        post(route("shop-management.shop.update-info"));
     };
 
     return (

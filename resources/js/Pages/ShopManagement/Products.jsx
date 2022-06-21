@@ -99,7 +99,9 @@ export default function Products(props) {
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="text-right p-4">
                                 <Link
-                                    href={route("dashboard.products.create")}
+                                    href={route(
+                                        "shop-management.products.create"
+                                    )}
                                     className="py-2 px-4 border border-blue-500 text-center bg-blue-500 text-white rounded inline-block"
                                 >
                                     <PlusIcon className="text-white w-4 h-4 inline-block mr-2" />

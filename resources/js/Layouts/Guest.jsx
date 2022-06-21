@@ -10,7 +10,7 @@ export default function Guest({ children }) {
         <div className="container min-h-screen max-w-full">
             <div className="container bg-gray-100 max-w-full border-b border-gray-500 flex justify-between px-5">
                 <div className="text-gray-400">
-                    <Link href={route("dashboard")}>Shop</Link>
+                    <Link href={route("shop-management")}>Shop</Link>
                 </div>
                 <div className="flex justify-end items-center text-gray-400">
                     <Link href="#" className="mr-3">

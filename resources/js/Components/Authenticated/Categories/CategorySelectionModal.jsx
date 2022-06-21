@@ -81,7 +81,7 @@ export default function CategoySelectionModal(props) {
     const handleSave = () => {
         axios
             .post(
-                route("dashboard.api.shop.attach-categories", {
+                route("shop-management.api.shop.attach-categories", {
                     shop: props.auth.user.id,
                 }),
                 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\ShopManagement;
 
 use App\Models\Shop;
 use Illuminate\Http\Request;
@@ -11,6 +11,9 @@ use Inertia\Inertia;
 
 class ShopController extends Controller
 {
+    /**
+     * @var \App\Models\Shop
+     */
     private $shop;
 
     public function __construct(Shop $shop)
@@ -25,7 +28,7 @@ class ShopController extends Controller
      */
     public function editInfo()
     {
-        return Inertia::render('Dashboard/ShopInfo');
+        return Inertia::render('ShopManagement/ShopInfo');
     }
 
     /**
@@ -38,7 +41,7 @@ class ShopController extends Controller
         $user->fill($request->validated());
         $user->update();
 
-        return Inertia::render('Dashboard/ShopInfo');
+        return Inertia::render('ShopManagement/ShopInfo');
     }
 
     /**

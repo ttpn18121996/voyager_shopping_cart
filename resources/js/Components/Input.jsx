@@ -1,4 +1,6 @@
+import { _customThemeSelect2 } from "@/common/helpers";
 import React, { useEffect, useRef } from "react";
+import Select from "react-select";
 
 export default function Input({
     type = "text",
@@ -10,6 +12,8 @@ export default function Input({
     isFocused,
     handleChange,
     prepend,
+    options,
+    isMulti,
 }) {
     const input = useRef();
 
@@ -19,13 +23,29 @@ export default function Input({
         }
     }, []);
 
-    return (
+    const generateSelect = () => (
+        <Select
+            isMulti
+            name={name}
+            id={name}
+            inputId={`react-select-2-${name}`}
+            className="rounded-md mt-1 block w-full select2"
+            options={options}
+            theme={_customThemeSelect2}
+            onChange={handleChange}
+        />
+    );
+
+    return type === "select" ? (
+        generateSelect()
+    ) : (
         <div
             className={
                 "flex items-start " + (prepend ? "flex-row gap-2" : "flex-col")
             }
         >
             {prepend}
+
             <input
                 type={type}
                 name={name}

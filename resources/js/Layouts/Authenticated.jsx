@@ -8,15 +8,15 @@ import ConfirmModal from "@/Components/Authenticated/ConfirmModal";
 
 const MENU = [
     {
-        routeName: "dashboard",
+        routeName: "shop-management",
         title: "Dashboard",
     },
     {
-        routeName: "dashboard.categories.index",
+        routeName: "shop-management.categories.index",
         title: "Categories",
     },
     {
-        routeName: "dashboard.products.index",
+        routeName: "shop-management.products.index",
         title: "Products",
     },
 ];
@@ -80,7 +80,7 @@ export default function Authenticated({ auth, header, children }) {
                                     <Dropdown.Content>
                                         <Dropdown.Link
                                             href={route(
-                                                "dashboard.shop.edit-info"
+                                                "shop-management.shop.edit-info"
                                             )}
                                             method="get"
                                             as="button"
