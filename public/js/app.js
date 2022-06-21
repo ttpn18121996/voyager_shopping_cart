@@ -6957,15 +6957,17 @@ __webpack_require__.r(__webpack_exports__);
 
 function Button(_ref) {
   var _ref$type = _ref.type,
-      type = _ref$type === void 0 ? 'submit' : _ref$type,
+      type = _ref$type === void 0 ? "submit" : _ref$type,
       _ref$className = _ref.className,
-      className = _ref$className === void 0 ? '' : _ref$className,
+      className = _ref$className === void 0 ? "" : _ref$className,
       processing = _ref.processing,
-      children = _ref.children;
+      children = _ref.children,
+      handleClick = _ref.handleClick;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
     type: type,
-    className: "inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ".concat(processing && 'opacity-25', " ") + className,
+    className: "inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ".concat(processing && "opacity-25", " ") + className,
     disabled: processing,
+    onClick: handleClick,
     children: children
   });
 }
@@ -7203,6 +7205,91 @@ function Navigation() {
       })]
     })
   });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Components/ImageComponent.jsx":
+/*!****************************************************!*\
+  !*** ./resources/js/Components/ImageComponent.jsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createImage": () => (/* binding */ createImage),
+/* harmony export */   "default": () => (/* binding */ ImageComponent),
+/* harmony export */   "getCroppedImg": () => (/* binding */ getCroppedImg)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+function ImageComponent() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
+}
+function createImage(url) {
+  return new Promise(function (resolve, reject) {
+    var image = new Image();
+    image.addEventListener("load", function () {
+      return resolve(image);
+    });
+    image.addEventListener("error", function (error) {
+      return reject(error);
+    });
+    image.setAttribute("crossOrigin", "anonymous");
+    image.src = url;
+  });
+}
+function getCroppedImg(_x, _x2) {
+  return _getCroppedImg.apply(this, arguments);
+}
+
+function _getCroppedImg() {
+  _getCroppedImg = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(imageSrc, pixelCrop) {
+    var ratioImage,
+        image,
+        canvas,
+        ctx,
+        _args = arguments;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            ratioImage = _args.length > 2 && _args[2] !== undefined ? _args[2] : 1;
+            _context.next = 3;
+            return createImage(imageSrc);
+
+          case 3:
+            image = _context.sent;
+            pixelCrop.width = (pixelCrop === null || pixelCrop === void 0 ? void 0 : pixelCrop.width) || image.width;
+            pixelCrop.height = (pixelCrop === null || pixelCrop === void 0 ? void 0 : pixelCrop.height) || image.width / ratioImage;
+            canvas = document.createElement("canvas");
+            canvas.width = pixelCrop.width;
+            canvas.height = pixelCrop.height;
+            ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(image, pixelCrop.x, pixelCrop.y, pixelCrop.width, pixelCrop.height, 0, 0, pixelCrop.width, pixelCrop.height); // As Base64 string
+
+            return _context.abrupt("return", canvas.toDataURL("image/jpeg"));
+
+          case 14:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _getCroppedImg.apply(this, arguments);
 }
 
 /***/ }),
@@ -8754,17 +8841,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ CreateProduct)
 /* harmony export */ });
-/* harmony import */ var _common_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/common/helpers */ "./resources/js/common/helpers.js");
-/* harmony import */ var _Components_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.jsx");
-/* harmony import */ var _Components_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.jsx");
-/* harmony import */ var _Components_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.jsx");
-/* harmony import */ var _Components_ValidationInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/ValidationInput */ "./resources/js/Components/ValidationInput.jsx");
-/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.jsx");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/common/constants */ "./resources/js/common/constants.js");
+/* harmony import */ var _common_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/common/helpers */ "./resources/js/common/helpers.js");
+/* harmony import */ var _Components_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.jsx");
+/* harmony import */ var _Components_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.jsx");
+/* harmony import */ var _Components_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.jsx");
+/* harmony import */ var _Components_ValidationInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/ValidationInput */ "./resources/js/Components/ValidationInput.jsx");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.jsx");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_easy_crop__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-easy-crop */ "./node_modules/react-easy-crop/index.module.js");
+/* harmony import */ var _Components_ImageComponent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Components/ImageComponent */ "./resources/js/Components/ImageComponent.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8791,8 +8891,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+var _crop = {
+  x: 0,
+  y: 0
+};
+var _ratio = 1;
 function CreateProduct(props) {
-  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__.useForm)({
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_8__.useForm)({
     name: "",
     price: 0,
     total: 0,
@@ -8801,107 +8908,225 @@ function CreateProduct(props) {
   }),
       data = _useForm.data,
       setData = _useForm.setData,
-      post = _useForm.post,
-      errors = _useForm.errors,
       processing = _useForm.processing;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_8__.useState)(),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_common_constants__WEBPACK_IMPORTED_MODULE_1__.IMAGE_DEFAULT),
       _useState2 = _slicedToArray(_useState, 2),
-      file = _useState2[0],
-      setFile = _useState2[1];
+      imagePreviewUrl = _useState2[0],
+      setImagePreviewUrl = _useState2[1];
+
+  var _croppedAreaPixels = {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0
+  };
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_crop),
+      _useState4 = _slicedToArray(_useState3, 2),
+      crop = _useState4[0],
+      setCrop = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+      _useState6 = _slicedToArray(_useState5, 2),
+      zoom = _useState6[0],
+      setZoom = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState8 = _slicedToArray(_useState7, 2),
+      file = _useState8[0],
+      setFile = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState10 = _slicedToArray(_useState9, 2),
+      inputValue = _useState10[0],
+      setInputValue = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState12 = _slicedToArray(_useState11, 2),
+      croppedAreaPixels = _useState12[0],
+      setCroppedAreaPixels = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState14 = _slicedToArray(_useState13, 2),
+      croppedImage = _useState14[0],
+      setCroppedImage = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      chooseImg = _useState16[0],
+      setChooseImg = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+      _useState18 = _slicedToArray(_useState17, 2),
+      errors = _useState18[0],
+      setErrors = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState20 = _slicedToArray(_useState19, 2),
+      response = _useState20[0],
+      setResponse = _useState20[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    showCroppedImage(_croppedAreaPixels);
+  }, []);
+
+  var handleCancelUpdate = function handleCancelUpdate() {
+    setChooseImg(false);
+    setFile();
+    setImagePreviewUrl(_common_constants__WEBPACK_IMPORTED_MODULE_1__.IMAGE_DEFAULT);
+    setInputValue("");
+    setCrop(_crop);
+    setZoom(1);
+  };
 
   var onHandleChange = function onHandleChange(event) {
     setData(event.target.name, event.target.type === "checkbox" ? event.target.checked : event.target.value);
   };
 
-  var handleUploadImage = function handleUploadImage(e) {};
+  var handleUploadImage = function handleUploadImage(e) {
+    e.preventDefault();
+    var reader = new FileReader();
+    var fileUpload = e.target.files[0];
 
-  var handleSave = function handleSave() {
-    console.log(data);
+    reader.onloadend = function () {
+      setFile(fileUpload);
+      setImagePreviewUrl(reader.result);
+    };
+
+    reader.readAsDataURL(fileUpload);
+    setInputValue(e.target.value);
+    setChooseImg(true);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  var onCropComplete = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (croppedArea, croppedAreaPixels) {
+    setCroppedAreaPixels(croppedAreaPixels);
+  }, []);
+
+  var showCroppedImage = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var croppedData,
+          croppedImage,
+          _args = arguments;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              croppedData = _args.length > 0 && _args[0] !== undefined ? _args[0] : _croppedAreaPixels;
+              _context.next = 3;
+              return (0,_Components_ImageComponent__WEBPACK_IMPORTED_MODULE_10__.getCroppedImg)(imagePreviewUrl, croppedAreaPixels ? croppedAreaPixels : croppedData);
+
+            case 3:
+              croppedImage = _context.sent;
+              setCroppedImage(croppedImage);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function showCroppedImage() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var handleSave = function handleSave() {
+    var formData = new FormData();
+    setResponse(null);
+
+    for (var field in data) {
+      formData.append(field, data[field]);
+    }
+
+    if (file) {
+      formData.append("thumbnail", file);
+      formData.append("crop_x", crop.x);
+      formData.append("crop_y", crop.y);
+      formData.append("crop_width", croppedAreaPixels.width);
+      formData.append("crop_height", croppedAreaPixels.height);
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_11___default().post(route("shop-management.products.store"), formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(function (res) {
+      setResponse(res.data);
+      setTimeout(function () {
+        window.location.href = route("shop-management.products.index");
+      }, _common_constants__WEBPACK_IMPORTED_MODULE_1__.TIMEOUT_DEFAULT);
+    }, function (error) {
+      if (error.response.status === 422) {
+        var _errors = {};
+
+        for (var _field in error.response.data.errors) {
+          _errors[_field] = error.response.data.errors[_field][0];
+        }
+
+        setErrors(_errors);
+      } else {
+        setResponse({
+          message: error.response.data.message,
+          success: false
+        });
+      }
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_7__["default"], {
       auth: props.auth,
       errors: props.errors,
-      header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h2", {
+      header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
         className: "font-semibold text-xl text-gray-800 leading-tight",
         children: "Create product"
       }),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__.Head, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_8__.Head, {
         title: "Create product"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
         className: "py-12",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "max-w-7xl mx-auto sm:px-6 lg:px-8",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-            className: "bg-white overflow-hidden flex justify-center items-center shadow-sm sm:rounded-lg",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-              className: "w-full mt-6 px-6 py-4 bg-white overflow-hidden sm:rounded-lg",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          children: [response ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "mb-6 font-medium rounded p-4 " + (response.success ? "text-green-700 bg-green-200" : "text-red-700 bg-red-200"),
+            children: response.message
+          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "bg-white flex justify-center items-center shadow-sm sm:rounded-lg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "w-full mt-6 px-6 py-4 bg-white sm:rounded-lg",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "grid lg:grid-cols-2 gap-4",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                     className: "mb-4",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
                       forInput: "name",
                       value: "Name"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       type: "text",
                       id: "name",
                       name: "name",
                       className: "mt-1 block w-full",
                       value: data.name,
                       handleChange: onHandleChange
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
                       className: "text-sm text-gray-400",
-                      children: lodash__WEBPACK_IMPORTED_MODULE_7___default().kebabCase((0,_common_helpers__WEBPACK_IMPORTED_MODULE_0__.nonUnicode)(data.name))
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_ValidationInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      children: lodash__WEBPACK_IMPORTED_MODULE_9___default().kebabCase((0,_common_helpers__WEBPACK_IMPORTED_MODULE_2__.nonUnicode)(data.name))
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_ValidationInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
                       name: "name",
                       errors: errors
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                     className: "mb-4",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                      forInput: "price",
-                      value: "Price"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                      type: "number",
-                      id: "price",
-                      name: "price",
-                      className: "mt-1 block w-full text-right",
-                      value: data.price,
-                      handleChange: onHandleChange
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_ValidationInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                      name: "price",
-                      errors: errors
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                    className: "mb-4",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                      forInput: "total",
-                      value: "Total"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                      type: "number",
-                      id: "total",
-                      name: "total",
-                      className: "mt-1 block w-full text-right",
-                      value: data.total,
-                      handleChange: onHandleChange
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_ValidationInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                      name: "total",
-                      errors: errors
-                    })]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                    className: "mb-4",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
                       forInput: "categories",
                       value: "Categories"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                       className: "flex items-start flex-col cursor-text",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
                         type: "select",
                         isMulti: true,
                         name: "categories",
@@ -8916,51 +9141,122 @@ function CreateProduct(props) {
                             return v.value;
                           }));
                         }
-                      })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_ValidationInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                        name: "categories",
+                        errors: errors
+                      })]
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                     className: "mb-4",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                      forInput: "description",
-                      value: "Description"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("textarea", {
-                      id: "description",
-                      name: "description",
-                      className: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full",
-                      value: data.description,
-                      onChange: onHandleChange,
-                      rows: "4"
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                      forInput: "price",
+                      value: "Price"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      type: "number",
+                      id: "price",
+                      name: "price",
+                      className: "mt-1 block w-full text-right",
+                      value: data.price,
+                      handleChange: onHandleChange
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_ValidationInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                      name: "price",
+                      errors: errors
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                    className: "mb-4",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                      forInput: "total",
+                      value: "Total"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      type: "number",
+                      id: "total",
+                      name: "total",
+                      className: "mt-1 block w-full text-right",
+                      value: data.total,
+                      handleChange: onHandleChange
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_ValidationInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                      name: "total",
+                      errors: errors
                     })]
                   })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                      value: "Thumbnail"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                      className: "text-center my-4 h-80 mx-auto relative",
+                      children: chooseImg ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_easy_crop__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                        image: imagePreviewUrl,
+                        crop: crop,
+                        zoom: zoom,
+                        aspect: _ratio,
+                        onCropChange: setCrop,
+                        onCropComplete: onCropComplete,
+                        onZoomChange: setZoom
+                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
+                        src: croppedImage || imagePreviewUrl,
+                        className: "max-h-80 mx-auto"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                      className: "text-center mt-4 relative",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                        className: chooseImg ? "hidden" : "block",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("input", {
+                          type: "file",
+                          name: "images",
+                          accept: "image/png,image/jpg,image/jpeg",
+                          className: "focus:outline-none focus:border-none cursor-pointer w-full absolute inset-0 opacity-0 mr-4",
+                          onChange: handleUploadImage,
+                          value: inputValue
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                          className: "px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase",
+                          children: "Choose image"
+                        })]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                        className: "mt-4 text-center ".concat(chooseImg ? "block" : "hidden"),
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                          className: "px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase inline-block",
+                          onClick: function onClick() {
+                            setChooseImg(false);
+                            showCroppedImage();
+                          },
+                          children: "Done"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                          className: "px-4 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase inline-block",
+                          onClick: handleCancelUpdate,
+                          children: "Cancel"
+                        })]
+                      })]
+                    })]
+                  })
                 })]
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "bg-white overflow-hidden flex flex-col justify-center items-start shadow-sm sm:rounded-lg mt-6",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "w-full mt-6 px-6 py-4 bg-white overflow-hidden sm:rounded-lg",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  value: "Thumbnail"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-                  className: "text-center mt-4",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
-                    type: "file",
-                    name: "images",
-                    accept: "image/png,image/jpg,image/jpeg",
-                    className: "focus:outline-none focus:border-none cursor-pointer w-full",
-                    onChange: handleUploadImage
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-                    className: "px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase",
-                    children: "Choose image"
-                  })]
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                className: "mb-4",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                  forInput: "description",
+                  value: "Description"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("textarea", {
+                  id: "description",
+                  name: "description",
+                  className: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full",
+                  value: data.description,
+                  onChange: onHandleChange,
+                  rows: "4"
                 })]
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "bg-white overflow-hidden flex justify-center items-center shadow-sm sm:rounded-lg mt-6 py-6",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              type: "button",
               processing: processing,
+              handleClick: handleSave,
               children: "Save"
             })
           })]
@@ -9437,6 +9733,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/common/constants.js":
+/*!******************************************!*\
+  !*** ./resources/js/common/constants.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "IMAGE_DEFAULT": () => (/* binding */ IMAGE_DEFAULT),
+/* harmony export */   "TIMEOUT_DEFAULT": () => (/* binding */ TIMEOUT_DEFAULT)
+/* harmony export */ });
+var IMAGE_DEFAULT = "/storage/imgs/default.jpg";
+var TIMEOUT_DEFAULT = 3000;
 
 /***/ }),
 
@@ -30029,6 +30342,629 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./node_modules/normalize-wheel/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/normalize-wheel/index.js ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__(/*! ./src/normalizeWheel.js */ "./node_modules/normalize-wheel/src/normalizeWheel.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/normalize-wheel/src/ExecutionEnvironment.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/normalize-wheel/src/ExecutionEnvironment.js ***!
+  \******************************************************************/
+/***/ ((module) => {
+
+"use strict";
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ExecutionEnvironment
+ */
+
+/*jslint evil: true */
+
+
+
+var canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
+
+/**
+ * Simple, lightweight module assisting with the detection and context of
+ * Worker. Helps avoid circular dependencies and allows code to reason about
+ * whether or not they are in a Worker, even if they never include the main
+ * `ReactWorker` dependency.
+ */
+var ExecutionEnvironment = {
+
+  canUseDOM: canUseDOM,
+
+  canUseWorkers: typeof Worker !== 'undefined',
+
+  canUseEventListeners:
+    canUseDOM && !!(window.addEventListener || window.attachEvent),
+
+  canUseViewport: canUseDOM && !!window.screen,
+
+  isInWorker: !canUseDOM // For now, this is true - might change in the future.
+
+};
+
+module.exports = ExecutionEnvironment;
+
+
+/***/ }),
+
+/***/ "./node_modules/normalize-wheel/src/UserAgent_DEPRECATED.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/normalize-wheel/src/UserAgent_DEPRECATED.js ***!
+  \******************************************************************/
+/***/ ((module) => {
+
+/**
+ * Copyright 2004-present Facebook. All Rights Reserved.
+ *
+ * @providesModule UserAgent_DEPRECATED
+ */
+
+/**
+ *  Provides entirely client-side User Agent and OS detection. You should prefer
+ *  the non-deprecated UserAgent module when possible, which exposes our
+ *  authoritative server-side PHP-based detection to the client.
+ *
+ *  Usage is straightforward:
+ *
+ *    if (UserAgent_DEPRECATED.ie()) {
+ *      //  IE
+ *    }
+ *
+ *  You can also do version checks:
+ *
+ *    if (UserAgent_DEPRECATED.ie() >= 7) {
+ *      //  IE7 or better
+ *    }
+ *
+ *  The browser functions will return NaN if the browser does not match, so
+ *  you can also do version compares the other way:
+ *
+ *    if (UserAgent_DEPRECATED.ie() < 7) {
+ *      //  IE6 or worse
+ *    }
+ *
+ *  Note that the version is a float and may include a minor version number,
+ *  so you should always use range operators to perform comparisons, not
+ *  strict equality.
+ *
+ *  **Note:** You should **strongly** prefer capability detection to browser
+ *  version detection where it's reasonable:
+ *
+ *    http://www.quirksmode.org/js/support.html
+ *
+ *  Further, we have a large number of mature wrapper functions and classes
+ *  which abstract away many browser irregularities. Check the documentation,
+ *  grep for things, or ask on javascript@lists.facebook.com before writing yet
+ *  another copy of "event || window.event".
+ *
+ */
+
+var _populated = false;
+
+// Browsers
+var _ie, _firefox, _opera, _webkit, _chrome;
+
+// Actual IE browser for compatibility mode
+var _ie_real_version;
+
+// Platforms
+var _osx, _windows, _linux, _android;
+
+// Architectures
+var _win64;
+
+// Devices
+var _iphone, _ipad, _native;
+
+var _mobile;
+
+function _populate() {
+  if (_populated) {
+    return;
+  }
+
+  _populated = true;
+
+  // To work around buggy JS libraries that can't handle multi-digit
+  // version numbers, Opera 10's user agent string claims it's Opera
+  // 9, then later includes a Version/X.Y field:
+  //
+  // Opera/9.80 (foo) Presto/2.2.15 Version/10.10
+  var uas = navigator.userAgent;
+  var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(uas);
+  var os    = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
+
+  _iphone = /\b(iPhone|iP[ao]d)/.exec(uas);
+  _ipad = /\b(iP[ao]d)/.exec(uas);
+  _android = /Android/i.exec(uas);
+  _native = /FBAN\/\w+;/i.exec(uas);
+  _mobile = /Mobile/i.exec(uas);
+
+  // Note that the IE team blog would have you believe you should be checking
+  // for 'Win64; x64'.  But MSDN then reveals that you can actually be coming
+  // from either x64 or ia64;  so ultimately, you should just check for Win64
+  // as in indicator of whether you're in 64-bit IE.  32-bit IE on 64-bit
+  // Windows will send 'WOW64' instead.
+  _win64 = !!(/Win64/.exec(uas));
+
+  if (agent) {
+    _ie = agent[1] ? parseFloat(agent[1]) : (
+          agent[5] ? parseFloat(agent[5]) : NaN);
+    // IE compatibility mode
+    if (_ie && document && document.documentMode) {
+      _ie = document.documentMode;
+    }
+    // grab the "true" ie version from the trident token if available
+    var trident = /(?:Trident\/(\d+.\d+))/.exec(uas);
+    _ie_real_version = trident ? parseFloat(trident[1]) + 4 : _ie;
+
+    _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
+    _opera   = agent[3] ? parseFloat(agent[3]) : NaN;
+    _webkit  = agent[4] ? parseFloat(agent[4]) : NaN;
+    if (_webkit) {
+      // We do not add the regexp to the above test, because it will always
+      // match 'safari' only since 'AppleWebKit' appears before 'Chrome' in
+      // the userAgent string.
+      agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
+      _chrome = agent && agent[1] ? parseFloat(agent[1]) : NaN;
+    } else {
+      _chrome = NaN;
+    }
+  } else {
+    _ie = _firefox = _opera = _chrome = _webkit = NaN;
+  }
+
+  if (os) {
+    if (os[1]) {
+      // Detect OS X version.  If no version number matches, set _osx to true.
+      // Version examples:  10, 10_6_1, 10.7
+      // Parses version number as a float, taking only first two sets of
+      // digits.  If only one set of digits is found, returns just the major
+      // version number.
+      var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
+
+      _osx = ver ? parseFloat(ver[1].replace('_', '.')) : true;
+    } else {
+      _osx = false;
+    }
+    _windows = !!os[2];
+    _linux   = !!os[3];
+  } else {
+    _osx = _windows = _linux = false;
+  }
+}
+
+var UserAgent_DEPRECATED = {
+
+  /**
+   *  Check if the UA is Internet Explorer.
+   *
+   *
+   *  @return float|NaN Version number (if match) or NaN.
+   */
+  ie: function() {
+    return _populate() || _ie;
+  },
+
+  /**
+   * Check if we're in Internet Explorer compatibility mode.
+   *
+   * @return bool true if in compatibility mode, false if
+   * not compatibility mode or not ie
+   */
+  ieCompatibilityMode: function() {
+    return _populate() || (_ie_real_version > _ie);
+  },
+
+
+  /**
+   * Whether the browser is 64-bit IE.  Really, this is kind of weak sauce;  we
+   * only need this because Skype can't handle 64-bit IE yet.  We need to remove
+   * this when we don't need it -- tracked by #601957.
+   */
+  ie64: function() {
+    return UserAgent_DEPRECATED.ie() && _win64;
+  },
+
+  /**
+   *  Check if the UA is Firefox.
+   *
+   *
+   *  @return float|NaN Version number (if match) or NaN.
+   */
+  firefox: function() {
+    return _populate() || _firefox;
+  },
+
+
+  /**
+   *  Check if the UA is Opera.
+   *
+   *
+   *  @return float|NaN Version number (if match) or NaN.
+   */
+  opera: function() {
+    return _populate() || _opera;
+  },
+
+
+  /**
+   *  Check if the UA is WebKit.
+   *
+   *
+   *  @return float|NaN Version number (if match) or NaN.
+   */
+  webkit: function() {
+    return _populate() || _webkit;
+  },
+
+  /**
+   *  For Push
+   *  WILL BE REMOVED VERY SOON. Use UserAgent_DEPRECATED.webkit
+   */
+  safari: function() {
+    return UserAgent_DEPRECATED.webkit();
+  },
+
+  /**
+   *  Check if the UA is a Chrome browser.
+   *
+   *
+   *  @return float|NaN Version number (if match) or NaN.
+   */
+  chrome : function() {
+    return _populate() || _chrome;
+  },
+
+
+  /**
+   *  Check if the user is running Windows.
+   *
+   *  @return bool `true' if the user's OS is Windows.
+   */
+  windows: function() {
+    return _populate() || _windows;
+  },
+
+
+  /**
+   *  Check if the user is running Mac OS X.
+   *
+   *  @return float|bool   Returns a float if a version number is detected,
+   *                       otherwise true/false.
+   */
+  osx: function() {
+    return _populate() || _osx;
+  },
+
+  /**
+   * Check if the user is running Linux.
+   *
+   * @return bool `true' if the user's OS is some flavor of Linux.
+   */
+  linux: function() {
+    return _populate() || _linux;
+  },
+
+  /**
+   * Check if the user is running on an iPhone or iPod platform.
+   *
+   * @return bool `true' if the user is running some flavor of the
+   *    iPhone OS.
+   */
+  iphone: function() {
+    return _populate() || _iphone;
+  },
+
+  mobile: function() {
+    return _populate() || (_iphone || _ipad || _android || _mobile);
+  },
+
+  nativeApp: function() {
+    // webviews inside of the native apps
+    return _populate() || _native;
+  },
+
+  android: function() {
+    return _populate() || _android;
+  },
+
+  ipad: function() {
+    return _populate() || _ipad;
+  }
+};
+
+module.exports = UserAgent_DEPRECATED;
+
+
+/***/ }),
+
+/***/ "./node_modules/normalize-wheel/src/isEventSupported.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/normalize-wheel/src/isEventSupported.js ***!
+  \**************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * Copyright 2013-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule isEventSupported
+ */
+
+
+
+var ExecutionEnvironment = __webpack_require__(/*! ./ExecutionEnvironment */ "./node_modules/normalize-wheel/src/ExecutionEnvironment.js");
+
+var useHasFeature;
+if (ExecutionEnvironment.canUseDOM) {
+  useHasFeature =
+    document.implementation &&
+    document.implementation.hasFeature &&
+    // always returns true in newer browsers as per the standard.
+    // @see http://dom.spec.whatwg.org/#dom-domimplementation-hasfeature
+    document.implementation.hasFeature('', '') !== true;
+}
+
+/**
+ * Checks if an event is supported in the current execution environment.
+ *
+ * NOTE: This will not work correctly for non-generic events such as `change`,
+ * `reset`, `load`, `error`, and `select`.
+ *
+ * Borrows from Modernizr.
+ *
+ * @param {string} eventNameSuffix Event name, e.g. "click".
+ * @param {?boolean} capture Check if the capture phase is supported.
+ * @return {boolean} True if the event is supported.
+ * @internal
+ * @license Modernizr 3.0.0pre (Custom Build) | MIT
+ */
+function isEventSupported(eventNameSuffix, capture) {
+  if (!ExecutionEnvironment.canUseDOM ||
+      capture && !('addEventListener' in document)) {
+    return false;
+  }
+
+  var eventName = 'on' + eventNameSuffix;
+  var isSupported = eventName in document;
+
+  if (!isSupported) {
+    var element = document.createElement('div');
+    element.setAttribute(eventName, 'return;');
+    isSupported = typeof element[eventName] === 'function';
+  }
+
+  if (!isSupported && useHasFeature && eventNameSuffix === 'wheel') {
+    // This is the only way to test support for the `wheel` event in IE9+.
+    isSupported = document.implementation.hasFeature('Events.wheel', '3.0');
+  }
+
+  return isSupported;
+}
+
+module.exports = isEventSupported;
+
+
+/***/ }),
+
+/***/ "./node_modules/normalize-wheel/src/normalizeWheel.js":
+/*!************************************************************!*\
+  !*** ./node_modules/normalize-wheel/src/normalizeWheel.js ***!
+  \************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule normalizeWheel
+ * @typechecks
+ */
+
+
+
+var UserAgent_DEPRECATED = __webpack_require__(/*! ./UserAgent_DEPRECATED */ "./node_modules/normalize-wheel/src/UserAgent_DEPRECATED.js");
+
+var isEventSupported = __webpack_require__(/*! ./isEventSupported */ "./node_modules/normalize-wheel/src/isEventSupported.js");
+
+
+// Reasonable defaults
+var PIXEL_STEP  = 10;
+var LINE_HEIGHT = 40;
+var PAGE_HEIGHT = 800;
+
+/**
+ * Mouse wheel (and 2-finger trackpad) support on the web sucks.  It is
+ * complicated, thus this doc is long and (hopefully) detailed enough to answer
+ * your questions.
+ *
+ * If you need to react to the mouse wheel in a predictable way, this code is
+ * like your bestest friend. * hugs *
+ *
+ * As of today, there are 4 DOM event types you can listen to:
+ *
+ *   'wheel'                -- Chrome(31+), FF(17+), IE(9+)
+ *   'mousewheel'           -- Chrome, IE(6+), Opera, Safari
+ *   'MozMousePixelScroll'  -- FF(3.5 only!) (2010-2013) -- don't bother!
+ *   'DOMMouseScroll'       -- FF(0.9.7+) since 2003
+ *
+ * So what to do?  The is the best:
+ *
+ *   normalizeWheel.getEventType();
+ *
+ * In your event callback, use this code to get sane interpretation of the
+ * deltas.  This code will return an object with properties:
+ *
+ *   spinX   -- normalized spin speed (use for zoom) - x plane
+ *   spinY   -- " - y plane
+ *   pixelX  -- normalized distance (to pixels) - x plane
+ *   pixelY  -- " - y plane
+ *
+ * Wheel values are provided by the browser assuming you are using the wheel to
+ * scroll a web page by a number of lines or pixels (or pages).  Values can vary
+ * significantly on different platforms and browsers, forgetting that you can
+ * scroll at different speeds.  Some devices (like trackpads) emit more events
+ * at smaller increments with fine granularity, and some emit massive jumps with
+ * linear speed or acceleration.
+ *
+ * This code does its best to normalize the deltas for you:
+ *
+ *   - spin is trying to normalize how far the wheel was spun (or trackpad
+ *     dragged).  This is super useful for zoom support where you want to
+ *     throw away the chunky scroll steps on the PC and make those equal to
+ *     the slow and smooth tiny steps on the Mac. Key data: This code tries to
+ *     resolve a single slow step on a wheel to 1.
+ *
+ *   - pixel is normalizing the desired scroll delta in pixel units.  You'll
+ *     get the crazy differences between browsers, but at least it'll be in
+ *     pixels!
+ *
+ *   - positive value indicates scrolling DOWN/RIGHT, negative UP/LEFT.  This
+ *     should translate to positive value zooming IN, negative zooming OUT.
+ *     This matches the newer 'wheel' event.
+ *
+ * Why are there spinX, spinY (or pixels)?
+ *
+ *   - spinX is a 2-finger side drag on the trackpad, and a shift + wheel turn
+ *     with a mouse.  It results in side-scrolling in the browser by default.
+ *
+ *   - spinY is what you expect -- it's the classic axis of a mouse wheel.
+ *
+ *   - I dropped spinZ/pixelZ.  It is supported by the DOM 3 'wheel' event and
+ *     probably is by browsers in conjunction with fancy 3D controllers .. but
+ *     you know.
+ *
+ * Implementation info:
+ *
+ * Examples of 'wheel' event if you scroll slowly (down) by one step with an
+ * average mouse:
+ *
+ *   OS X + Chrome  (mouse)     -    4   pixel delta  (wheelDelta -120)
+ *   OS X + Safari  (mouse)     -  N/A   pixel delta  (wheelDelta  -12)
+ *   OS X + Firefox (mouse)     -    0.1 line  delta  (wheelDelta  N/A)
+ *   Win8 + Chrome  (mouse)     -  100   pixel delta  (wheelDelta -120)
+ *   Win8 + Firefox (mouse)     -    3   line  delta  (wheelDelta -120)
+ *
+ * On the trackpad:
+ *
+ *   OS X + Chrome  (trackpad)  -    2   pixel delta  (wheelDelta   -6)
+ *   OS X + Firefox (trackpad)  -    1   pixel delta  (wheelDelta  N/A)
+ *
+ * On other/older browsers.. it's more complicated as there can be multiple and
+ * also missing delta values.
+ *
+ * The 'wheel' event is more standard:
+ *
+ * http://www.w3.org/TR/DOM-Level-3-Events/#events-wheelevents
+ *
+ * The basics is that it includes a unit, deltaMode (pixels, lines, pages), and
+ * deltaX, deltaY and deltaZ.  Some browsers provide other values to maintain
+ * backward compatibility with older events.  Those other values help us
+ * better normalize spin speed.  Example of what the browsers provide:
+ *
+ *                          | event.wheelDelta | event.detail
+ *        ------------------+------------------+--------------
+ *          Safari v5/OS X  |       -120       |       0
+ *          Safari v5/Win7  |       -120       |       0
+ *         Chrome v17/OS X  |       -120       |       0
+ *         Chrome v17/Win7  |       -120       |       0
+ *                IE9/Win7  |       -120       |   undefined
+ *         Firefox v4/OS X  |     undefined    |       1
+ *         Firefox v4/Win7  |     undefined    |       3
+ *
+ */
+function normalizeWheel(/*object*/ event) /*object*/ {
+  var sX = 0, sY = 0,       // spinX, spinY
+      pX = 0, pY = 0;       // pixelX, pixelY
+
+  // Legacy
+  if ('detail'      in event) { sY = event.detail; }
+  if ('wheelDelta'  in event) { sY = -event.wheelDelta / 120; }
+  if ('wheelDeltaY' in event) { sY = -event.wheelDeltaY / 120; }
+  if ('wheelDeltaX' in event) { sX = -event.wheelDeltaX / 120; }
+
+  // side scrolling on FF with DOMMouseScroll
+  if ( 'axis' in event && event.axis === event.HORIZONTAL_AXIS ) {
+    sX = sY;
+    sY = 0;
+  }
+
+  pX = sX * PIXEL_STEP;
+  pY = sY * PIXEL_STEP;
+
+  if ('deltaY' in event) { pY = event.deltaY; }
+  if ('deltaX' in event) { pX = event.deltaX; }
+
+  if ((pX || pY) && event.deltaMode) {
+    if (event.deltaMode == 1) {          // delta in LINE units
+      pX *= LINE_HEIGHT;
+      pY *= LINE_HEIGHT;
+    } else {                             // delta in PAGE units
+      pX *= PAGE_HEIGHT;
+      pY *= PAGE_HEIGHT;
+    }
+  }
+
+  // Fall-back if spin cannot be determined
+  if (pX && !sX) { sX = (pX < 1) ? -1 : 1; }
+  if (pY && !sY) { sY = (pY < 1) ? -1 : 1; }
+
+  return { spinX  : sX,
+           spinY  : sY,
+           pixelX : pX,
+           pixelY : pY };
+}
+
+
+/**
+ * The best combination if you prefer spinX + spinY normalization.  It favors
+ * the older DOMMouseScroll for Firefox, as FF does not include wheelDelta with
+ * 'wheel' event, making spin speed determination impossible.
+ */
+normalizeWheel.getEventType = function() /*string*/ {
+  return (UserAgent_DEPRECATED.firefox())
+           ? 'DOMMouseScroll'
+           : (isEventSupported('wheel'))
+               ? 'wheel'
+               : 'mousewheel';
+};
+
+module.exports = normalizeWheel;
 
 
 /***/ }),
@@ -58972,6 +59908,1148 @@ function checkDCE() {
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-easy-crop/index.module.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-easy-crop/index.module.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/react-easy-crop/node_modules/tslib/tslib.es6.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var normalize_wheel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! normalize-wheel */ "./node_modules/normalize-wheel/index.js");
+/* harmony import */ var normalize_wheel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(normalize_wheel__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+
+/**
+ * Compute the dimension of the crop area based on media size,
+ * aspect ratio and optionally rotation
+ */
+
+function getCropSize(mediaWidth, mediaHeight, containerWidth, containerHeight, aspect, rotation) {
+  if (rotation === void 0) {
+    rotation = 0;
+  }
+
+  var _a = rotateSize(mediaWidth, mediaHeight, rotation),
+      width = _a.width,
+      height = _a.height;
+
+  var fittingWidth = Math.min(width, containerWidth);
+  var fittingHeight = Math.min(height, containerHeight);
+
+  if (fittingWidth > fittingHeight * aspect) {
+    return {
+      width: fittingHeight * aspect,
+      height: fittingHeight
+    };
+  }
+
+  return {
+    width: fittingWidth,
+    height: fittingWidth / aspect
+  };
+}
+/**
+ * Compute media zoom.
+ * We fit the media into the container with "max-width: 100%; max-height: 100%;"
+ */
+
+function getMediaZoom(mediaSize) {
+  // Take the axis with more pixels to improve accuracy
+  return mediaSize.width > mediaSize.height ? mediaSize.width / mediaSize.naturalWidth : mediaSize.height / mediaSize.naturalHeight;
+}
+/**
+ * Ensure a new media position stays in the crop area.
+ */
+
+function restrictPosition(position, mediaSize, cropSize, zoom, rotation) {
+  if (rotation === void 0) {
+    rotation = 0;
+  }
+
+  var _a = rotateSize(mediaSize.width, mediaSize.height, rotation),
+      width = _a.width,
+      height = _a.height;
+
+  return {
+    x: restrictPositionCoord(position.x, width, cropSize.width, zoom),
+    y: restrictPositionCoord(position.y, height, cropSize.height, zoom)
+  };
+}
+
+function restrictPositionCoord(position, mediaSize, cropSize, zoom) {
+  var maxPosition = mediaSize * zoom / 2 - cropSize / 2;
+  return clamp(position, -maxPosition, maxPosition);
+}
+
+function getDistanceBetweenPoints(pointA, pointB) {
+  return Math.sqrt(Math.pow(pointA.y - pointB.y, 2) + Math.pow(pointA.x - pointB.x, 2));
+}
+function getRotationBetweenPoints(pointA, pointB) {
+  return Math.atan2(pointB.y - pointA.y, pointB.x - pointA.x) * 180 / Math.PI;
+}
+/**
+ * Compute the output cropped area of the media in percentages and pixels.
+ * x/y are the top-left coordinates on the src media
+ */
+
+function computeCroppedArea(crop, mediaSize, cropSize, aspect, zoom, rotation, restrictPosition) {
+  if (rotation === void 0) {
+    rotation = 0;
+  }
+
+  if (restrictPosition === void 0) {
+    restrictPosition = true;
+  } // if the media is rotated by the user, we cannot limit the position anymore
+  // as it might need to be negative.
+
+
+  var limitAreaFn = restrictPosition ? limitArea : noOp;
+  var mediaBBoxSize = rotateSize(mediaSize.width, mediaSize.height, rotation);
+  var mediaNaturalBBoxSize = rotateSize(mediaSize.naturalWidth, mediaSize.naturalHeight, rotation); // calculate the crop area in percentages
+  // in the rotated space
+
+  var croppedAreaPercentages = {
+    x: limitAreaFn(100, ((mediaBBoxSize.width - cropSize.width / zoom) / 2 - crop.x / zoom) / mediaBBoxSize.width * 100),
+    y: limitAreaFn(100, ((mediaBBoxSize.height - cropSize.height / zoom) / 2 - crop.y / zoom) / mediaBBoxSize.height * 100),
+    width: limitAreaFn(100, cropSize.width / mediaBBoxSize.width * 100 / zoom),
+    height: limitAreaFn(100, cropSize.height / mediaBBoxSize.height * 100 / zoom)
+  }; // we compute the pixels size naively
+
+  var widthInPixels = Math.round(limitAreaFn(mediaNaturalBBoxSize.width, croppedAreaPercentages.width * mediaNaturalBBoxSize.width / 100));
+  var heightInPixels = Math.round(limitAreaFn(mediaNaturalBBoxSize.height, croppedAreaPercentages.height * mediaNaturalBBoxSize.height / 100));
+  var isImgWiderThanHigh = mediaNaturalBBoxSize.width >= mediaNaturalBBoxSize.height * aspect; // then we ensure the width and height exactly match the aspect (to avoid rounding approximations)
+  // if the media is wider than high, when zoom is 0, the crop height will be equals to image height
+  // thus we want to compute the width from the height and aspect for accuracy.
+  // Otherwise, we compute the height from width and aspect.
+
+  var sizePixels = isImgWiderThanHigh ? {
+    width: Math.round(heightInPixels * aspect),
+    height: heightInPixels
+  } : {
+    width: widthInPixels,
+    height: Math.round(widthInPixels / aspect)
+  };
+
+  var croppedAreaPixels = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, sizePixels), {
+    x: Math.round(limitAreaFn(mediaNaturalBBoxSize.width - sizePixels.width, croppedAreaPercentages.x * mediaNaturalBBoxSize.width / 100)),
+    y: Math.round(limitAreaFn(mediaNaturalBBoxSize.height - sizePixels.height, croppedAreaPercentages.y * mediaNaturalBBoxSize.height / 100))
+  });
+
+  return {
+    croppedAreaPercentages: croppedAreaPercentages,
+    croppedAreaPixels: croppedAreaPixels
+  };
+}
+/**
+ * Ensure the returned value is between 0 and max
+ */
+
+function limitArea(max, value) {
+  return Math.min(max, Math.max(0, value));
+}
+
+function noOp(_max, value) {
+  return value;
+}
+/**
+ * Compute crop and zoom from the croppedAreaPercentages.
+ */
+
+
+function getInitialCropFromCroppedAreaPercentages(croppedAreaPercentages, mediaSize, rotation, cropSize, minZoom, maxZoom) {
+  var mediaBBoxSize = rotateSize(mediaSize.width, mediaSize.height, rotation); // This is the inverse process of computeCroppedArea
+
+  var zoom = clamp(cropSize.width / mediaBBoxSize.width * (100 / croppedAreaPercentages.width), minZoom, maxZoom);
+  var crop = {
+    x: zoom * mediaBBoxSize.width / 2 - cropSize.width / 2 - mediaBBoxSize.width * zoom * (croppedAreaPercentages.x / 100),
+    y: zoom * mediaBBoxSize.height / 2 - cropSize.height / 2 - mediaBBoxSize.height * zoom * (croppedAreaPercentages.y / 100)
+  };
+  return {
+    crop: crop,
+    zoom: zoom
+  };
+}
+/**
+ * Compute zoom from the croppedAreaPixels
+ */
+
+function getZoomFromCroppedAreaPixels(croppedAreaPixels, mediaSize, cropSize) {
+  var mediaZoom = getMediaZoom(mediaSize);
+  return cropSize.height > cropSize.width ? cropSize.height / (croppedAreaPixels.height * mediaZoom) : cropSize.width / (croppedAreaPixels.width * mediaZoom);
+}
+/**
+ * Compute crop and zoom from the croppedAreaPixels
+ */
+
+
+function getInitialCropFromCroppedAreaPixels(croppedAreaPixels, mediaSize, rotation, cropSize, minZoom, maxZoom) {
+  if (rotation === void 0) {
+    rotation = 0;
+  }
+
+  var mediaNaturalBBoxSize = rotateSize(mediaSize.naturalWidth, mediaSize.naturalHeight, rotation);
+  var zoom = clamp(getZoomFromCroppedAreaPixels(croppedAreaPixels, mediaSize, cropSize), minZoom, maxZoom);
+  var cropZoom = cropSize.height > cropSize.width ? cropSize.height / croppedAreaPixels.height : cropSize.width / croppedAreaPixels.width;
+  var crop = {
+    x: ((mediaNaturalBBoxSize.width - croppedAreaPixels.width) / 2 - croppedAreaPixels.x) * cropZoom,
+    y: ((mediaNaturalBBoxSize.height - croppedAreaPixels.height) / 2 - croppedAreaPixels.y) * cropZoom
+  };
+  return {
+    crop: crop,
+    zoom: zoom
+  };
+}
+/**
+ * Return the point that is the center of point a and b
+ */
+
+function getCenter(a, b) {
+  return {
+    x: (b.x + a.x) / 2,
+    y: (b.y + a.y) / 2
+  };
+}
+function getRadianAngle(degreeValue) {
+  return degreeValue * Math.PI / 180;
+}
+/**
+ * Returns the new bounding area of a rotated rectangle.
+ */
+
+function rotateSize(width, height, rotation) {
+  var rotRad = getRadianAngle(rotation);
+  return {
+    width: Math.abs(Math.cos(rotRad) * width) + Math.abs(Math.sin(rotRad) * height),
+    height: Math.abs(Math.sin(rotRad) * width) + Math.abs(Math.cos(rotRad) * height)
+  };
+}
+/**
+ * Clamp value between min and max
+ */
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+/**
+ * Combine multiple class names into a single string.
+ */
+
+function classNames() {
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+
+  return args.filter(function (value) {
+    if (typeof value === 'string' && value.length > 0) {
+      return true;
+    }
+
+    return false;
+  }).join(' ').trim();
+}
+
+var css_248z = ".reactEasyCrop_Container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  overflow: hidden;\n  user-select: none;\n  touch-action: none;\n  cursor: move;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.reactEasyCrop_Image,\n.reactEasyCrop_Video {\n  will-change: transform; /* this improves performances and prevent painting issues on iOS Chrome */\n}\n\n.reactEasyCrop_Contain {\n  max-width: 100%;\n  max-height: 100%;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.reactEasyCrop_Cover_Horizontal {\n  width: 100%;\n  height: auto;\n}\n.reactEasyCrop_Cover_Vertical {\n  width: auto;\n  height: 100%;\n}\n\n.reactEasyCrop_CropArea {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  border: 1px solid rgba(255, 255, 255, 0.5);\n  box-sizing: border-box;\n  box-shadow: 0 0 0 9999em;\n  color: rgba(0, 0, 0, 0.5);\n  overflow: hidden;\n}\n\n.reactEasyCrop_CropAreaRound {\n  border-radius: 50%;\n}\n\n.reactEasyCrop_CropAreaGrid::before {\n  content: ' ';\n  box-sizing: border-box;\n  position: absolute;\n  border: 1px solid rgba(255, 255, 255, 0.5);\n  top: 0;\n  bottom: 0;\n  left: 33.33%;\n  right: 33.33%;\n  border-top: 0;\n  border-bottom: 0;\n}\n\n.reactEasyCrop_CropAreaGrid::after {\n  content: ' ';\n  box-sizing: border-box;\n  position: absolute;\n  border: 1px solid rgba(255, 255, 255, 0.5);\n  top: 33.33%;\n  bottom: 33.33%;\n  left: 0;\n  right: 0;\n  border-left: 0;\n  border-right: 0;\n}\n";
+
+var MIN_ZOOM = 1;
+var MAX_ZOOM = 3;
+
+var Cropper =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__extends)(Cropper, _super);
+
+  function Cropper() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.imageRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.videoRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.containerRef = null;
+    _this.styleRef = null;
+    _this.containerRect = null;
+    _this.mediaSize = {
+      width: 0,
+      height: 0,
+      naturalWidth: 0,
+      naturalHeight: 0
+    };
+    _this.dragStartPosition = {
+      x: 0,
+      y: 0
+    };
+    _this.dragStartCrop = {
+      x: 0,
+      y: 0
+    };
+    _this.lastPinchDistance = 0;
+    _this.lastPinchRotation = 0;
+    _this.rafDragTimeout = null;
+    _this.rafPinchTimeout = null;
+    _this.wheelTimer = null;
+    _this.state = {
+      cropSize: null,
+      hasWheelJustStarted: false
+    }; // this is to prevent Safari on iOS >= 10 to zoom the page
+
+    _this.preventZoomSafari = function (e) {
+      return e.preventDefault();
+    };
+
+    _this.cleanEvents = function () {
+      document.removeEventListener('mousemove', _this.onMouseMove);
+      document.removeEventListener('mouseup', _this.onDragStopped);
+      document.removeEventListener('touchmove', _this.onTouchMove);
+      document.removeEventListener('touchend', _this.onDragStopped);
+    };
+
+    _this.clearScrollEvent = function () {
+      if (_this.containerRef) _this.containerRef.removeEventListener('wheel', _this.onWheel);
+
+      if (_this.wheelTimer) {
+        clearTimeout(_this.wheelTimer);
+      }
+    };
+
+    _this.onMediaLoad = function () {
+      var cropSize = _this.computeSizes();
+
+      if (cropSize) {
+        _this.emitCropData();
+
+        _this.setInitialCrop(cropSize);
+      }
+
+      if (_this.props.onMediaLoaded) {
+        _this.props.onMediaLoaded(_this.mediaSize);
+      }
+    };
+
+    _this.setInitialCrop = function (cropSize) {
+      if (_this.props.initialCroppedAreaPercentages) {
+        var _a = getInitialCropFromCroppedAreaPercentages(_this.props.initialCroppedAreaPercentages, _this.mediaSize, _this.props.rotation, cropSize, _this.props.minZoom, _this.props.maxZoom),
+            crop = _a.crop,
+            zoom = _a.zoom;
+
+        _this.props.onCropChange(crop);
+
+        _this.props.onZoomChange && _this.props.onZoomChange(zoom);
+      } else if (_this.props.initialCroppedAreaPixels) {
+        var _b = getInitialCropFromCroppedAreaPixels(_this.props.initialCroppedAreaPixels, _this.mediaSize, _this.props.rotation, cropSize, _this.props.minZoom, _this.props.maxZoom),
+            crop = _b.crop,
+            zoom = _b.zoom;
+
+        _this.props.onCropChange(crop);
+
+        _this.props.onZoomChange && _this.props.onZoomChange(zoom);
+      }
+    };
+
+    _this.computeSizes = function () {
+      var _a, _b, _c, _d, _e, _f;
+
+      var mediaRef = _this.imageRef.current || _this.videoRef.current;
+
+      if (mediaRef && _this.containerRef) {
+        _this.containerRect = _this.containerRef.getBoundingClientRect();
+        var containerAspect = _this.containerRect.width / _this.containerRect.height;
+        var naturalWidth = ((_a = _this.imageRef.current) === null || _a === void 0 ? void 0 : _a.naturalWidth) || ((_b = _this.videoRef.current) === null || _b === void 0 ? void 0 : _b.videoWidth) || 0;
+        var naturalHeight = ((_c = _this.imageRef.current) === null || _c === void 0 ? void 0 : _c.naturalHeight) || ((_d = _this.videoRef.current) === null || _d === void 0 ? void 0 : _d.videoHeight) || 0;
+        var isMediaScaledDown = mediaRef.offsetWidth < naturalWidth || mediaRef.offsetHeight < naturalHeight;
+        var mediaAspect = naturalWidth / naturalHeight; // We do not rely on the offsetWidth/offsetHeight if the media is scaled down
+        // as the values they report are rounded. That will result in precision losses
+        // when calculating zoom. We use the fact that the media is positionned relative
+        // to the container. That allows us to use the container's dimensions
+        // and natural aspect ratio of the media to calculate accurate media size.
+        // However, for this to work, the container should not be rotated
+
+        var renderedMediaSize = void 0;
+
+        if (isMediaScaledDown) {
+          switch (_this.props.objectFit) {
+            default:
+            case 'contain':
+              renderedMediaSize = containerAspect > mediaAspect ? {
+                width: _this.containerRect.height * mediaAspect,
+                height: _this.containerRect.height
+              } : {
+                width: _this.containerRect.width,
+                height: _this.containerRect.width / mediaAspect
+              };
+              break;
+
+            case 'horizontal-cover':
+              renderedMediaSize = {
+                width: _this.containerRect.width,
+                height: _this.containerRect.width / mediaAspect
+              };
+              break;
+
+            case 'vertical-cover':
+              renderedMediaSize = {
+                width: _this.containerRect.height * mediaAspect,
+                height: _this.containerRect.height
+              };
+              break;
+
+            case 'auto-cover':
+              renderedMediaSize = naturalWidth > naturalHeight ? {
+                width: _this.containerRect.width,
+                height: _this.containerRect.width / mediaAspect
+              } : {
+                width: _this.containerRect.height * mediaAspect,
+                height: _this.containerRect.height
+              };
+              break;
+          }
+        } else {
+          renderedMediaSize = {
+            width: mediaRef.offsetWidth,
+            height: mediaRef.offsetHeight
+          };
+        }
+
+        _this.mediaSize = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, renderedMediaSize), {
+          naturalWidth: naturalWidth,
+          naturalHeight: naturalHeight
+        });
+        var cropSize = _this.props.cropSize ? _this.props.cropSize : getCropSize(_this.mediaSize.width, _this.mediaSize.height, _this.containerRect.width, _this.containerRect.height, _this.props.aspect, _this.props.rotation);
+
+        if (((_e = _this.state.cropSize) === null || _e === void 0 ? void 0 : _e.height) !== cropSize.height || ((_f = _this.state.cropSize) === null || _f === void 0 ? void 0 : _f.width) !== cropSize.width) {
+          _this.props.onCropSizeChange && _this.props.onCropSizeChange(cropSize);
+        }
+
+        _this.setState({
+          cropSize: cropSize
+        }, _this.recomputeCropPosition);
+
+        return cropSize;
+      }
+    };
+
+    _this.onMouseDown = function (e) {
+      e.preventDefault();
+      document.addEventListener('mousemove', _this.onMouseMove);
+      document.addEventListener('mouseup', _this.onDragStopped);
+
+      _this.onDragStart(Cropper.getMousePoint(e));
+    };
+
+    _this.onMouseMove = function (e) {
+      return _this.onDrag(Cropper.getMousePoint(e));
+    };
+
+    _this.onTouchStart = function (e) {
+      if (_this.props.onTouchRequest && !_this.props.onTouchRequest(e)) {
+        return;
+      }
+
+      document.addEventListener('touchmove', _this.onTouchMove, {
+        passive: false
+      }); // iOS 11 now defaults to passive: true
+
+      document.addEventListener('touchend', _this.onDragStopped);
+
+      if (e.touches.length === 2) {
+        _this.onPinchStart(e);
+      } else if (e.touches.length === 1) {
+        _this.onDragStart(Cropper.getTouchPoint(e.touches[0]));
+      }
+    };
+
+    _this.onTouchMove = function (e) {
+      // Prevent whole page from scrolling on iOS.
+      e.preventDefault();
+
+      if (e.touches.length === 2) {
+        _this.onPinchMove(e);
+      } else if (e.touches.length === 1) {
+        _this.onDrag(Cropper.getTouchPoint(e.touches[0]));
+      }
+    };
+
+    _this.onDragStart = function (_a) {
+      var _b, _c;
+
+      var x = _a.x,
+          y = _a.y;
+      _this.dragStartPosition = {
+        x: x,
+        y: y
+      };
+      _this.dragStartCrop = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, _this.props.crop);
+      (_c = (_b = _this.props).onInteractionStart) === null || _c === void 0 ? void 0 : _c.call(_b);
+    };
+
+    _this.onDrag = function (_a) {
+      var x = _a.x,
+          y = _a.y;
+      if (_this.rafDragTimeout) window.cancelAnimationFrame(_this.rafDragTimeout);
+      _this.rafDragTimeout = window.requestAnimationFrame(function () {
+        if (!_this.state.cropSize) return;
+        if (x === undefined || y === undefined) return;
+        var offsetX = x - _this.dragStartPosition.x;
+        var offsetY = y - _this.dragStartPosition.y;
+        var requestedPosition = {
+          x: _this.dragStartCrop.x + offsetX,
+          y: _this.dragStartCrop.y + offsetY
+        };
+        var newPosition = _this.props.restrictPosition ? restrictPosition(requestedPosition, _this.mediaSize, _this.state.cropSize, _this.props.zoom, _this.props.rotation) : requestedPosition;
+
+        _this.props.onCropChange(newPosition);
+      });
+    };
+
+    _this.onDragStopped = function () {
+      var _a, _b;
+
+      _this.cleanEvents();
+
+      _this.emitCropData();
+
+      (_b = (_a = _this.props).onInteractionEnd) === null || _b === void 0 ? void 0 : _b.call(_a);
+    };
+
+    _this.onWheel = function (e) {
+      if (_this.props.onWheelRequest && !_this.props.onWheelRequest(e)) {
+        return;
+      }
+
+      e.preventDefault();
+      var point = Cropper.getMousePoint(e);
+      var pixelY = normalize_wheel__WEBPACK_IMPORTED_MODULE_1___default()(e).pixelY;
+      var newZoom = _this.props.zoom - pixelY * _this.props.zoomSpeed / 200;
+
+      _this.setNewZoom(newZoom, point);
+
+      if (!_this.state.hasWheelJustStarted) {
+        _this.setState({
+          hasWheelJustStarted: true
+        }, function () {
+          var _a, _b;
+
+          return (_b = (_a = _this.props).onInteractionStart) === null || _b === void 0 ? void 0 : _b.call(_a);
+        });
+      }
+
+      if (_this.wheelTimer) {
+        clearTimeout(_this.wheelTimer);
+      }
+
+      _this.wheelTimer = window.setTimeout(function () {
+        return _this.setState({
+          hasWheelJustStarted: false
+        }, function () {
+          var _a, _b;
+
+          return (_b = (_a = _this.props).onInteractionEnd) === null || _b === void 0 ? void 0 : _b.call(_a);
+        });
+      }, 250);
+    };
+
+    _this.getPointOnContainer = function (_a) {
+      var x = _a.x,
+          y = _a.y;
+
+      if (!_this.containerRect) {
+        throw new Error('The Cropper is not mounted');
+      }
+
+      return {
+        x: _this.containerRect.width / 2 - (x - _this.containerRect.left),
+        y: _this.containerRect.height / 2 - (y - _this.containerRect.top)
+      };
+    };
+
+    _this.getPointOnMedia = function (_a) {
+      var x = _a.x,
+          y = _a.y;
+      var _b = _this.props,
+          crop = _b.crop,
+          zoom = _b.zoom;
+      return {
+        x: (x + crop.x) / zoom,
+        y: (y + crop.y) / zoom
+      };
+    };
+
+    _this.setNewZoom = function (zoom, point) {
+      if (!_this.state.cropSize || !_this.props.onZoomChange) return;
+
+      var zoomPoint = _this.getPointOnContainer(point);
+
+      var zoomTarget = _this.getPointOnMedia(zoomPoint);
+
+      var newZoom = clamp(zoom, _this.props.minZoom, _this.props.maxZoom);
+      var requestedPosition = {
+        x: zoomTarget.x * newZoom - zoomPoint.x,
+        y: zoomTarget.y * newZoom - zoomPoint.y
+      };
+      var newPosition = _this.props.restrictPosition ? restrictPosition(requestedPosition, _this.mediaSize, _this.state.cropSize, newZoom, _this.props.rotation) : requestedPosition;
+
+      _this.props.onCropChange(newPosition);
+
+      _this.props.onZoomChange(newZoom);
+    };
+
+    _this.getCropData = function () {
+      if (!_this.state.cropSize) {
+        return null;
+      } // this is to ensure the crop is correctly restricted after a zoom back (https://github.com/ValentinH/react-easy-crop/issues/6)
+
+
+      var restrictedPosition = _this.props.restrictPosition ? restrictPosition(_this.props.crop, _this.mediaSize, _this.state.cropSize, _this.props.zoom, _this.props.rotation) : _this.props.crop;
+      return computeCroppedArea(restrictedPosition, _this.mediaSize, _this.state.cropSize, _this.getAspect(), _this.props.zoom, _this.props.rotation, _this.props.restrictPosition);
+    };
+
+    _this.emitCropData = function () {
+      var cropData = _this.getCropData();
+
+      if (!cropData) return;
+      var croppedAreaPercentages = cropData.croppedAreaPercentages,
+          croppedAreaPixels = cropData.croppedAreaPixels;
+
+      if (_this.props.onCropComplete) {
+        _this.props.onCropComplete(croppedAreaPercentages, croppedAreaPixels);
+      }
+
+      if (_this.props.onCropAreaChange) {
+        _this.props.onCropAreaChange(croppedAreaPercentages, croppedAreaPixels);
+      }
+    };
+
+    _this.emitCropAreaChange = function () {
+      var cropData = _this.getCropData();
+
+      if (!cropData) return;
+      var croppedAreaPercentages = cropData.croppedAreaPercentages,
+          croppedAreaPixels = cropData.croppedAreaPixels;
+
+      if (_this.props.onCropAreaChange) {
+        _this.props.onCropAreaChange(croppedAreaPercentages, croppedAreaPixels);
+      }
+    };
+
+    _this.recomputeCropPosition = function () {
+      if (!_this.state.cropSize) return;
+      var newPosition = _this.props.restrictPosition ? restrictPosition(_this.props.crop, _this.mediaSize, _this.state.cropSize, _this.props.zoom, _this.props.rotation) : _this.props.crop;
+
+      _this.props.onCropChange(newPosition);
+
+      _this.emitCropData();
+    };
+
+    return _this;
+  }
+
+  Cropper.prototype.componentDidMount = function () {
+    window.addEventListener('resize', this.computeSizes);
+
+    if (this.containerRef) {
+      this.props.zoomWithScroll && this.containerRef.addEventListener('wheel', this.onWheel, {
+        passive: false
+      });
+      this.containerRef.addEventListener('gesturestart', this.preventZoomSafari);
+      this.containerRef.addEventListener('gesturechange', this.preventZoomSafari);
+    }
+
+    if (!this.props.disableAutomaticStylesInjection) {
+      this.styleRef = document.createElement('style');
+      this.styleRef.setAttribute('type', 'text/css');
+
+      if (this.props.nonce) {
+        this.styleRef.setAttribute('nonce', this.props.nonce);
+      }
+
+      this.styleRef.innerHTML = css_248z;
+      document.head.appendChild(this.styleRef);
+    } // when rendered via SSR, the image can already be loaded and its onLoad callback will never be called
+
+
+    if (this.imageRef.current && this.imageRef.current.complete) {
+      this.onMediaLoad();
+    } // set image and video refs in the parent if the callbacks exist
+
+
+    if (this.props.setImageRef) {
+      this.props.setImageRef(this.imageRef);
+    }
+
+    if (this.props.setVideoRef) {
+      this.props.setVideoRef(this.videoRef);
+    }
+  };
+
+  Cropper.prototype.componentWillUnmount = function () {
+    var _a;
+
+    window.removeEventListener('resize', this.computeSizes);
+
+    if (this.containerRef) {
+      this.containerRef.removeEventListener('gesturestart', this.preventZoomSafari);
+      this.containerRef.removeEventListener('gesturechange', this.preventZoomSafari);
+    }
+
+    if (this.styleRef) {
+      (_a = this.styleRef.parentNode) === null || _a === void 0 ? void 0 : _a.removeChild(this.styleRef);
+    }
+
+    this.cleanEvents();
+    this.props.zoomWithScroll && this.clearScrollEvent();
+  };
+
+  Cropper.prototype.componentDidUpdate = function (prevProps) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+
+    if (prevProps.rotation !== this.props.rotation) {
+      this.computeSizes();
+      this.recomputeCropPosition();
+    } else if (prevProps.aspect !== this.props.aspect) {
+      this.computeSizes();
+    } else if (prevProps.zoom !== this.props.zoom) {
+      this.recomputeCropPosition();
+    } else if (((_a = prevProps.cropSize) === null || _a === void 0 ? void 0 : _a.height) !== ((_b = this.props.cropSize) === null || _b === void 0 ? void 0 : _b.height) || ((_c = prevProps.cropSize) === null || _c === void 0 ? void 0 : _c.width) !== ((_d = this.props.cropSize) === null || _d === void 0 ? void 0 : _d.width)) {
+      this.computeSizes();
+    } else if (((_e = prevProps.crop) === null || _e === void 0 ? void 0 : _e.x) !== ((_f = this.props.crop) === null || _f === void 0 ? void 0 : _f.x) || ((_g = prevProps.crop) === null || _g === void 0 ? void 0 : _g.y) !== ((_h = this.props.crop) === null || _h === void 0 ? void 0 : _h.y)) {
+      this.emitCropAreaChange();
+    }
+
+    if (prevProps.zoomWithScroll !== this.props.zoomWithScroll && this.containerRef) {
+      this.props.zoomWithScroll ? this.containerRef.addEventListener('wheel', this.onWheel, {
+        passive: false
+      }) : this.clearScrollEvent();
+    }
+
+    if (prevProps.video !== this.props.video) {
+      (_j = this.videoRef.current) === null || _j === void 0 ? void 0 : _j.load();
+    }
+  };
+
+  Cropper.prototype.getAspect = function () {
+    var _a = this.props,
+        cropSize = _a.cropSize,
+        aspect = _a.aspect;
+
+    if (cropSize) {
+      return cropSize.width / cropSize.height;
+    }
+
+    return aspect;
+  };
+
+  Cropper.prototype.onPinchStart = function (e) {
+    var pointA = Cropper.getTouchPoint(e.touches[0]);
+    var pointB = Cropper.getTouchPoint(e.touches[1]);
+    this.lastPinchDistance = getDistanceBetweenPoints(pointA, pointB);
+    this.lastPinchRotation = getRotationBetweenPoints(pointA, pointB);
+    this.onDragStart(getCenter(pointA, pointB));
+  };
+
+  Cropper.prototype.onPinchMove = function (e) {
+    var _this = this;
+
+    var pointA = Cropper.getTouchPoint(e.touches[0]);
+    var pointB = Cropper.getTouchPoint(e.touches[1]);
+    var center = getCenter(pointA, pointB);
+    this.onDrag(center);
+    if (this.rafPinchTimeout) window.cancelAnimationFrame(this.rafPinchTimeout);
+    this.rafPinchTimeout = window.requestAnimationFrame(function () {
+      var distance = getDistanceBetweenPoints(pointA, pointB);
+      var newZoom = _this.props.zoom * (distance / _this.lastPinchDistance);
+
+      _this.setNewZoom(newZoom, center);
+
+      _this.lastPinchDistance = distance;
+      var rotation = getRotationBetweenPoints(pointA, pointB);
+      var newRotation = _this.props.rotation + (rotation - _this.lastPinchRotation);
+      _this.props.onRotationChange && _this.props.onRotationChange(newRotation);
+      _this.lastPinchRotation = rotation;
+    });
+  };
+
+  Cropper.prototype.render = function () {
+    var _this = this;
+
+    var _a = this.props,
+        image = _a.image,
+        video = _a.video,
+        mediaProps = _a.mediaProps,
+        transform = _a.transform,
+        _b = _a.crop,
+        x = _b.x,
+        y = _b.y,
+        rotation = _a.rotation,
+        zoom = _a.zoom,
+        cropShape = _a.cropShape,
+        showGrid = _a.showGrid,
+        _c = _a.style,
+        containerStyle = _c.containerStyle,
+        cropAreaStyle = _c.cropAreaStyle,
+        mediaStyle = _c.mediaStyle,
+        _d = _a.classes,
+        containerClassName = _d.containerClassName,
+        cropAreaClassName = _d.cropAreaClassName,
+        mediaClassName = _d.mediaClassName,
+        objectFit = _a.objectFit;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      onMouseDown: this.onMouseDown,
+      onTouchStart: this.onTouchStart,
+      ref: function ref(el) {
+        return _this.containerRef = el;
+      },
+      "data-testid": "container",
+      style: containerStyle,
+      className: classNames('reactEasyCrop_Container', containerClassName)
+    }, image ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({
+      alt: "",
+      className: classNames('reactEasyCrop_Image', objectFit === 'contain' && 'reactEasyCrop_Contain', objectFit === 'horizontal-cover' && 'reactEasyCrop_Cover_Horizontal', objectFit === 'vertical-cover' && 'reactEasyCrop_Cover_Vertical', objectFit === 'auto-cover' && (this.mediaSize.naturalWidth > this.mediaSize.naturalHeight ? 'reactEasyCrop_Cover_Horizontal' : 'reactEasyCrop_Cover_Vertical'), mediaClassName)
+    }, mediaProps, {
+      src: image,
+      ref: this.imageRef,
+      style: (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, mediaStyle), {
+        transform: transform || "translate(" + x + "px, " + y + "px) rotate(" + rotation + "deg) scale(" + zoom + ")"
+      }),
+      onLoad: this.onMediaLoad
+    })) : video && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("video", (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({
+      autoPlay: true,
+      loop: true,
+      muted: true,
+      className: classNames('reactEasyCrop_Video', objectFit === 'contain' && 'reactEasyCrop_Contain', objectFit === 'horizontal-cover' && 'reactEasyCrop_Cover_Horizontal', objectFit === 'vertical-cover' && 'reactEasyCrop_Cover_Vertical', objectFit === 'auto-cover' && (this.mediaSize.naturalWidth > this.mediaSize.naturalHeight ? 'reactEasyCrop_Cover_Horizontal' : 'reactEasyCrop_Cover_Vertical'), mediaClassName)
+    }, mediaProps, {
+      ref: this.videoRef,
+      onLoadedMetadata: this.onMediaLoad,
+      style: (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, mediaStyle), {
+        transform: transform || "translate(" + x + "px, " + y + "px) rotate(" + rotation + "deg) scale(" + zoom + ")"
+      }),
+      controls: false
+    }), (Array.isArray(video) ? video : [{
+      src: video
+    }]).map(function (item) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("source", (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({
+        key: item.src
+      }, item));
+    })), this.state.cropSize && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, cropAreaStyle), {
+        width: this.state.cropSize.width,
+        height: this.state.cropSize.height
+      }),
+      "data-testid": "cropper",
+      className: classNames('reactEasyCrop_CropArea', cropShape === 'round' && 'reactEasyCrop_CropAreaRound', showGrid && 'reactEasyCrop_CropAreaGrid', cropAreaClassName)
+    }));
+  };
+
+  Cropper.defaultProps = {
+    zoom: 1,
+    rotation: 0,
+    aspect: 4 / 3,
+    maxZoom: MAX_ZOOM,
+    minZoom: MIN_ZOOM,
+    cropShape: 'rect',
+    objectFit: 'contain',
+    showGrid: true,
+    style: {},
+    classes: {},
+    mediaProps: {},
+    zoomSpeed: 1,
+    restrictPosition: true,
+    zoomWithScroll: true
+  };
+
+  Cropper.getMousePoint = function (e) {
+    return {
+      x: Number(e.clientX),
+      y: Number(e.clientY)
+    };
+  };
+
+  Cropper.getTouchPoint = function (touch) {
+    return {
+      x: Number(touch.clientX),
+      y: Number(touch.clientY)
+    };
+  };
+
+  return Cropper;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cropper);
+//# sourceMappingURL=index.module.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/react-easy-crop/node_modules/tslib/tslib.es6.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/react-easy-crop/node_modules/tslib/tslib.es6.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__assign": () => (/* binding */ __assign),
+/* harmony export */   "__asyncDelegator": () => (/* binding */ __asyncDelegator),
+/* harmony export */   "__asyncGenerator": () => (/* binding */ __asyncGenerator),
+/* harmony export */   "__asyncValues": () => (/* binding */ __asyncValues),
+/* harmony export */   "__await": () => (/* binding */ __await),
+/* harmony export */   "__awaiter": () => (/* binding */ __awaiter),
+/* harmony export */   "__classPrivateFieldGet": () => (/* binding */ __classPrivateFieldGet),
+/* harmony export */   "__classPrivateFieldSet": () => (/* binding */ __classPrivateFieldSet),
+/* harmony export */   "__createBinding": () => (/* binding */ __createBinding),
+/* harmony export */   "__decorate": () => (/* binding */ __decorate),
+/* harmony export */   "__exportStar": () => (/* binding */ __exportStar),
+/* harmony export */   "__extends": () => (/* binding */ __extends),
+/* harmony export */   "__generator": () => (/* binding */ __generator),
+/* harmony export */   "__importDefault": () => (/* binding */ __importDefault),
+/* harmony export */   "__importStar": () => (/* binding */ __importStar),
+/* harmony export */   "__makeTemplateObject": () => (/* binding */ __makeTemplateObject),
+/* harmony export */   "__metadata": () => (/* binding */ __metadata),
+/* harmony export */   "__param": () => (/* binding */ __param),
+/* harmony export */   "__read": () => (/* binding */ __read),
+/* harmony export */   "__rest": () => (/* binding */ __rest),
+/* harmony export */   "__spread": () => (/* binding */ __spread),
+/* harmony export */   "__spreadArrays": () => (/* binding */ __spreadArrays),
+/* harmony export */   "__values": () => (/* binding */ __values)
+/* harmony export */ });
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+var __createBinding = Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+});
+
+function __exportStar(m, o) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+}
+
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+var __setModuleDefault = Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
 }
 
 

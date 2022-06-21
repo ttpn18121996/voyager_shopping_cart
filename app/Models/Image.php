@@ -14,7 +14,17 @@ class Image extends Model
     const ATTACHMENT = 2;
 
     protected $fillable = [
-        'imageable_type', 'imageable_id', 'type', 'image_url', 'created_at', 'updated_at',
+        'imageable_type',
+        'imageable_id',
+        'type',
+        'name',
+        'crop_x',
+        'crop_y',
+        'crop_width',
+        'crop_height',
+        'image_url',
+        'created_at',
+        'updated_at',
     ];
 
     public function imageable()
