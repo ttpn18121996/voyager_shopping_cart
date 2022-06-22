@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('imageable_id');
             $table->string('name')->nullable();
             $table->tinyInteger('type')->default(0)->comment('0: thumbnail, 1: avatar, 2: attachment');
-            $table->string('image_url');
+            $table->string('public_url');
+            $table->string('image_path');
             $table->double('crop_x')->default(0);
             $table->double('crop_y')->default(0);
             $table->float('crop_width')->default(300);

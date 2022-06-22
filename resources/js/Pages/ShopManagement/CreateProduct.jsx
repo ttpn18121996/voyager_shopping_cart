@@ -20,6 +20,7 @@ export default function CreateProduct(props) {
         name: "",
         price: 0,
         total: 0,
+        status: "0",
         description: "",
         categories: [],
     });
@@ -175,7 +176,6 @@ export default function CreateProduct(props) {
                                             />
                                             <Input
                                                 type="text"
-                                                id="name"
                                                 name="name"
                                                 className="mt-1 block w-full"
                                                 value={data.name}
@@ -229,7 +229,6 @@ export default function CreateProduct(props) {
                                             />
                                             <Input
                                                 type="number"
-                                                id="price"
                                                 name="price"
                                                 className="mt-1 block w-full text-right"
                                                 value={data.price}
@@ -247,7 +246,6 @@ export default function CreateProduct(props) {
                                             />
                                             <Input
                                                 type="number"
-                                                id="total"
                                                 name="total"
                                                 className="mt-1 block w-full text-right"
                                                 value={data.total}
@@ -256,6 +254,32 @@ export default function CreateProduct(props) {
                                             <ValidationInput
                                                 name="total"
                                                 errors={errors}
+                                            />
+                                        </div>
+                                        <div className="mb-4">
+                                            <Label
+                                                forInput="status"
+                                                value="Status"
+                                            />
+                                            <Input
+                                                type="radio"
+                                                name="status"
+                                                className="mt-1 block w-full text-right"
+                                                options={[
+                                                    {
+                                                        label: "Unpublished",
+                                                        value: 0,
+                                                        checked:
+                                                            data.status === "0",
+                                                    },
+                                                    {
+                                                        label: "Published",
+                                                        value: 1,
+                                                        checked:
+                                                            data.status === "1",
+                                                    },
+                                                ]}
+                                                handleChange={onHandleChange}
                                             />
                                         </div>
                                     </div>
@@ -297,7 +321,7 @@ export default function CreateProduct(props) {
                                                         type="file"
                                                         name="images"
                                                         accept="image/png,image/jpg,image/jpeg"
-                                                        className="focus:outline-none focus:border-none cursor-pointer w-full absolute inset-0 opacity-0 mr-4"
+                                                        className="focus:outline-none focus:border-none cursor-pointer w-full absolute inset-0 opacity-0"
                                                         onChange={
                                                             handleUploadImage
                                                         }
@@ -315,7 +339,7 @@ export default function CreateProduct(props) {
                                                     }`}
                                                 >
                                                     <div
-                                                        className="px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase inline-block"
+                                                        className="px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase inline-block mr-4"
                                                         onClick={() => {
                                                             setChooseImg(false);
                                                             showCroppedImage();

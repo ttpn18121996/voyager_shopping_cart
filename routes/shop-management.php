@@ -35,3 +35,7 @@ Route::controller(ShopController::class)->group(function () {
 Route::resource('products', ProductController::class, [
     'as' => 'shop-management',
 ]);
+Route::put('/products/{product}', [ProductController::class, 'update'])
+    ->name('shop-management.products.update');
+Route::patch('/products/{product}', [ProductController::class, 'updateStatus'])
+    ->name('shop-management.products.update-status');

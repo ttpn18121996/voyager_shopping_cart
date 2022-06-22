@@ -2,23 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name', 'slug', 'description', 'price', 'total', 'status', 'created_at', 'updated_at',
     ];
 
-    public function slug(): Attribute
+    public function generateSlug($name)
     {
-        return Attribute::make(
-            set: fn ($value) => str($value)->append('.' . $this->max($this->getKeyName()) + 1)->toString()
-        );
+        if ($this->getOriginal('name') != $name) {
+            return str($name)->slug()->append('.' . time())->toString();
+        }
+
+        return $this->slug;
     }
 
     public function shop()

@@ -22,7 +22,8 @@ class Image extends Model
         'crop_y',
         'crop_width',
         'crop_height',
-        'image_url',
+        'public_url',
+        'image_path',
         'created_at',
         'updated_at',
     ];
